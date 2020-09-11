@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Music Store</title>
+    
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-reboot.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="navbar navbar-dark bg-dark mb-3">
+        <div class="container">
+            <div>
+                <ul>
+                    <li class="navbar-brand "> @Html.ActionLink("Music Store", "Index", "Home",null, new { @class = "btn btn-outline-info" })</li>
+                    <li class="navbar-brand">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-outline-info" })</li>
+                    <li class="navbar-brand ">@Html.ActionLink("Store", "Index", "Store",null, new { @class = "btn btn-outline-info" })</li>
+                    <li class="navbar-brand">@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
+                    <li class="navbar-brand">@Html.ActionLink("Admin", "Index", "StoreManager", null, new { @class = "btn btn-outline-info" })</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @*<div class="navbar  mb-3">
+
+            
+
+        </div>*@
+   
+        <div style="width:20%;float: left" class="col-md-3">
+            @{Html.RenderAction("GenreMenu", "Store");}
+        </div>
+        <div style="width:80%;float:left">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

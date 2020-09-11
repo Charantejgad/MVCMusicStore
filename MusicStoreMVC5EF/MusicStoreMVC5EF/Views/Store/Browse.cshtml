@@ -1,0 +1,31 @@
+﻿@model MusicStoreMVC5EF.Models.Genre
+@{
+    ViewBag.Title = "Browse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="genre">
+    <h3><em>@Model.Name</em> Albums</h3>
+    <hr />
+    <table class="table table-borderless">
+        @{int counter = 0;}
+        <tr>
+            @foreach (var album in Model.Albums)
+            {
+                <td>
+                    <img alt="@album.Title" src="@album.AlbumArtUrl" />
+                    <a href="@Url.Action("Details", new { id = album.AlbumId })">
+                        <span class="btn btn-outline-secondary">@album.Title</span>
+                    </a>
+                </td>
+                counter++;
+                if(counter % 3   == 0)
+                {
+                    @:</tr><tr>
+                }
+
+            }
+        </tr>
+        </table>   
+</div>
